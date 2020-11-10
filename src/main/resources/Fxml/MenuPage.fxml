@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.JavaFXModul.ControlerJavaFX.ControlerMenuPage">
+   <children>
+      <HBox>
+         <children>
+            <Button mnemonicParsing="false" onAction="#AddUsers" text="Dodaj użykownika" />
+            <TextField prefHeight="25.0" promptText="Wyszukiwarka" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER">
+         <children>
+            <TableView fx:id="tableView" onMouseClicked="#ShowPolice">
+              <columns>
+                <TableColumn fx:id="Name" prefWidth="130.0" text="Imię" />
+                <TableColumn fx:id="LastName" prefWidth="130.0" text="Nazwisko" />
+                  <TableColumn fx:id="Pesel" prefWidth="130.0" text="Pesel" />
+                  <TableColumn fx:id="Birth" prefWidth="130.0" text="Data urodzenia" />
+                  <TableColumn fx:id="Phone" prefWidth="130.0" text="Telefon" />
+                  <TableColumn fx:id="Email" prefWidth="130.0" resizable="false" text="E-mail" />
+                  <TableColumn fx:id="DeleUser" minWidth="-Infinity" prefWidth="130.0" text="Usuń" />
+                  <TableColumn fx:id="AddPolice" prefWidth="130.0" text="Add Police" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <VBox>
+         <children>
+            <TableView fx:id="TableViewBot" prefWidth="1056.0">
+              <columns>
+                <TableColumn fx:id="NrPolice" prefWidth="130.0" text="Numer Polisy" />
+                <TableColumn fx:id="Mark" prefWidth="130.0" text="Marka" />
+                  <TableColumn fx:id="Model" prefWidth="130.0" text="Model" />
+                  <TableColumn fx:id="Vin" prefWidth="130.0" text="Vin" />
+                  <TableColumn fx:id="Reg" prefWidth="130.0" text="Numer Rejestracji" />
+                  <TableColumn fx:id="Tread" prefWidth="130.0" text="Bieżnik" />
+                  <TableColumn fx:id="DeletePolicy" prefWidth="130.0" text="Usuń" />
+                  <TableColumn fx:id="EditPolicy" prefWidth="130.0" text="Edytuj" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>
