@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class Police {
+public class Policy {
 
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Police {
 
 
 
-    public Police() {
+    public Policy() {
     }
     @ManyToOne(targetEntity = Client.class)
     Client client;
@@ -91,9 +91,7 @@ public class Police {
 
     @Override
     public String toString() {
-        return "Police{" +
-                "id=" + id +
-                ", NrPolice='" + NrPolice + '\'' +
+        return "Police{ NrPolice='" + NrPolice + '\'' +
                 ", Mark='" + Mark + '\'' +
                 ", Model='" + Model + '\'' +
                 ", Vin='" + Vin + '\'' +

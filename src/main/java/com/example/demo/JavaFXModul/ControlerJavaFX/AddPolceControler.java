@@ -1,9 +1,9 @@
 package com.example.demo.JavaFXModul.ControlerJavaFX;
 
-import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpPostPolice;
-import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpPatchPolice;
+import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpPostPolicy;
+import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpPutPolicy;
 import com.example.demo.SpringModul.Models.Client;
-import com.example.demo.SpringModul.Models.Police;
+import com.example.demo.SpringModul.Models.Policy;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class AddPolceControler {
 
     private Client client ;
-    private Police policeMain ;
+    private Policy policyMain;
     private Boolean ifedit ;
     private ControlerMenuPage controlerMenuPage;
 
@@ -61,23 +61,22 @@ public class AddPolceControler {
 
     public void initPolice(){
 
-        Police police = new Police();
-        police.setNrPolice(NumberPolicy.getText());
-        police.setMark(Mark.getText());
-        police.setModel(Model.getText());
-        police.setVin(Vin.getText());
-        police.setReg(Registration.getText());
-        police.setTread(Tread.getText());
-        police.setClient(client);
+        Policy policy = new Policy();
+        policy.setNrPolice(NumberPolicy.getText());
+        policy.setMark(Mark.getText());
+        policy.setModel(Model.getText());
+        policy.setVin(Vin.getText());
+        policy.setReg(Registration.getText());
+        policy.setTread(Tread.getText());
+        policy.setClient(client);
 
 
         if(ifedit) {
-            police.setId(policeMain.getId());
-            HttpPatchPolice.sendPatch(police);
+            policy.setId(policyMain.getId());
+            HttpPutPolicy.putPolice(policy);
         }else {
-            setPolice(police);
-            HttpPostPolice.sendPOST(police);
-            System.out.println("druga=a");
+            setPolice(policy);
+            HttpPostPolicy.postPolicy(policy);
         }
     }
     @FXML
@@ -95,12 +94,12 @@ public class AddPolceControler {
         return client;
     }
 
-    public Police getPolice() {
-        return policeMain;
+    public Policy getPolice() {
+        return policyMain;
     }
 
-    public void setPolice(Police police) {
-        this.policeMain = police;
+    public void setPolice(Policy policy) {
+        this.policyMain = policy;
     }
 
     public ControlerMenuPage getControlerMenuPage() {
@@ -119,15 +118,15 @@ public class AddPolceControler {
         this.ifedit = ifedit;
     }
 
-    public void fillPolice(Police police ){
+    public void fillPolice(Policy policy){
 
-        setPolice(police);
-        this.NumberPolicy.setText(police.getNrPolice());
-        this.Mark.setText(police.getMark());
-        this.Model.setText(police.getModel());
-        this.Vin.setText(police.getVin());
-        this.Registration.setText(police.getReg());
-        this.Tread.setText(police.getTread());
+        setPolice(policy);
+        this.NumberPolicy.setText(policy.getNrPolice());
+        this.Mark.setText(policy.getMark());
+        this.Model.setText(policy.getModel());
+        this.Vin.setText(policy.getVin());
+        this.Registration.setText(policy.getReg());
+        this.Tread.setText(policy.getTread());
         setIfedit(true);
     }
 

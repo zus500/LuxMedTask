@@ -1,12 +1,11 @@
 package com.example.demo.JavaFXModul.ModelFx;
 
 import com.example.demo.JavaFXModul.ControlerJavaFX.AddPolceControler;
-import com.example.demo.JavaFXModul.ControlerJavaFX.ControlerMainScreen;
 import com.example.demo.JavaFXModul.ControlerJavaFX.ControlerMenuPage;
 import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpDeletedClient;
 import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpDeletePolice;
 import com.example.demo.SpringModul.Models.Client;
-import com.example.demo.SpringModul.Models.Police;
+import com.example.demo.SpringModul.Models.Policy;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -96,13 +95,13 @@ public class MetodyStatyczne {
         return cellFactory;
     }
 
-    public  Callback<TableColumn<Police, String>, TableCell<Police, String>> crearDeletButtonPolicy(TableView<Police> tableView ){
+    public  Callback<TableColumn<Policy, String>, TableCell<Policy, String>> crearDeletButtonPolicy(TableView<Policy> tableView ){
 
-        Callback<TableColumn<Police, String>, TableCell<Police, String>> cellFactory1
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory1
                 =
-                new Callback<TableColumn<Police, String>, TableCell<Police, String>>() {
+                new Callback<TableColumn<Policy, String>, TableCell<Policy, String>>() {
                     @Override
-                    public TableCell call(final TableColumn<Police, String> param) {
+                    public TableCell call(final TableColumn<Policy, String> param) {
                         final TableCell<Client, String> cell = new TableCell<Client, String>() {
 
                             Button btn = new Button("Usuń");
@@ -116,9 +115,9 @@ public class MetodyStatyczne {
                                 } else {
 
                                     btn.setOnAction( event -> {
-                                        Police police = tableView.getItems().get(getIndex());
-                                        HttpDeletePolice.deletPoliceById(new Long(police.getId()));
-                                        controlerMenuPage.fillBotTable(police.getClient());
+                                        Policy policy = tableView.getItems().get(getIndex());
+                                        HttpDeletePolice.deletPoliceById(new Long(policy.getId()));
+                                        controlerMenuPage.fillBotTable(policy.getClient());
 
                                     });
                                     setGraphic(btn);
@@ -132,13 +131,13 @@ public class MetodyStatyczne {
         return cellFactory1;
     }
 
-    public  Callback<TableColumn<Police, String>, TableCell<Police, String>> creatEditButtonPolicy(TableView<Police> tableView ){
+    public  Callback<TableColumn<Policy, String>, TableCell<Policy, String>> creatEditButtonPolicy(TableView<Policy> tableView ){
 
-        Callback<TableColumn<Police, String>, TableCell<Police, String>> cellFactory1
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory1
                 =
-                new Callback<TableColumn<Police, String>, TableCell<Police, String>>() {
+                new Callback<TableColumn<Policy, String>, TableCell<Policy, String>>() {
                     @Override
-                    public TableCell call(final TableColumn<Police, String> param) {
+                    public TableCell call(final TableColumn<Policy, String> param) {
                         final TableCell<Client, String> cell = new TableCell<Client, String>() {
 
                             Button btn = new Button("Edytuj");
@@ -153,12 +152,12 @@ public class MetodyStatyczne {
 
                                     btn.setOnAction( event -> {
                                         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/AddPolice.fxml"));
-                                        Police police = tableView.getItems().get(getIndex());
+                                        Policy policy = tableView.getItems().get(getIndex());
                                         controlerMenuPage.showNewScene(loader);
                                         AddPolceControler addPolceControler = loader.getController();
                                         addPolceControler.setControlerMenuPage(getControlerMenuPage());
-                                        addPolceControler.setClient(police.getClient());
-                                        addPolceControler.fillPolice(police);
+                                        addPolceControler.setClient(policy.getClient());
+                                        addPolceControler.fillPolice(policy);
                                     });
                                     setGraphic(btn);
                                     setText(null);

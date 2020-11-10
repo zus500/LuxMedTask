@@ -43,7 +43,7 @@ public class AddUserControler {
     public  void AddUser (){
 
         Client client = fillUser();
-        HttpPostClient.sendPOST(client);
+        HttpPostClient.postClient(client);
         Stage stage = (Stage) AddUsers.getScene().getWindow();
         this.controlerMenuPage.fillValue();
         stage.close();

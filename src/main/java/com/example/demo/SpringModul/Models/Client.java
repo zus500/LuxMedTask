@@ -88,9 +88,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Client{"+ " name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", pesel='" + pesel + '\'' +
                 ", DateofBirth='" + DateofBirth + '\'' +
@@ -100,4 +98,8 @@ public class Client {
     }
 
 
+    public Client(String name, String lastname) {
+        this.name = name;
+        this.lastname = lastname;
+    }
 }

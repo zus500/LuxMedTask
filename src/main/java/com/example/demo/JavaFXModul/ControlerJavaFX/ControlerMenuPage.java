@@ -1,12 +1,11 @@
 package com.example.demo.JavaFXModul.ControlerJavaFX;
 
 
-import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpDeletedClient;
 import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpGetAllClient;
 import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpGetAllPolice;
 import com.example.demo.JavaFXModul.ModelFx.MetodyStatyczne;
 import com.example.demo.SpringModul.Models.Client;
-import com.example.demo.SpringModul.Models.Police;
+import com.example.demo.SpringModul.Models.Policy;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -45,38 +44,38 @@ public class ControlerMenuPage {
 
 
     @FXML
-    private TableColumn<Police, String>  NrPolice;
+    private TableColumn<Policy, String>  NrPolice;
 
     @FXML
-    private TableColumn<Police, String>  Mark;
+    private TableColumn<Policy, String>  Mark;
 
     @FXML
-    private TableColumn<Police, String>  Model;
+    private TableColumn<Policy, String>  Model;
 
     @FXML
-    private TableColumn<Police, String>  Vin;
+    private TableColumn<Policy, String>  Vin;
 
     @FXML
-    private TableColumn<Police, String>  Reg;
+    private TableColumn<Policy, String>  Reg;
 
     @FXML
-    private TableColumn<Police, String> Tread;
+    private TableColumn<Policy, String> Tread;
 
 
     @FXML
-    private TableColumn<Police, String> DeletePolicy;
+    private TableColumn<Policy, String> DeletePolicy;
 
     @FXML
-    private TableColumn<Police, String> EditPolicy;
+    private TableColumn<Policy, String> EditPolicy;
 
 
     @FXML
     TableView<Client>  tableView;
 
     @FXML
-    TableView<Police>  TableViewBot;
+    TableView<Policy>  TableViewBot;
 
-
+    private  Client client;
 
     @FXML
     public void AddUsers (){
@@ -89,7 +88,8 @@ public class ControlerMenuPage {
     @FXML
     public void initialize()  {
         fillValue();
-
+      this.client =  tableView.getItems().get(1);
+      fillBotTable(this.client);
     }
 
     public   void  fillValue(){
@@ -116,11 +116,11 @@ public class ControlerMenuPage {
         this.AddPolice.setCellFactory(cellFactory2);
 
         this.DeletePolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Police, String>, TableCell<Police, String>> cellFactory3 = metodyStatyczne.crearDeletButtonPolicy(TableViewBot);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory3 = metodyStatyczne.crearDeletButtonPolicy(TableViewBot);
         this.DeletePolicy.setCellFactory(cellFactory3);
 
         this.EditPolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Police, String>, TableCell<Police, String>> cellFactory4 = metodyStatyczne.creatEditButtonPolicy(TableViewBot);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory4 = metodyStatyczne.creatEditButtonPolicy(TableViewBot);
         this.EditPolicy.setCellFactory(cellFactory4);
     }
 
@@ -128,10 +128,11 @@ public class ControlerMenuPage {
 
     @FXML
     public void ShowPolice(Event event  ) {
-       Client client = tableView.getSelectionModel().getSelectedItem();
-       if(client.equals(null)){
+       Client clienttable = tableView.getSelectionModel().getSelectedItem();
+       if(clienttable  != null){
+           fillBotTable(clienttable);
        }else {
-           fillBotTable(client);
+           fillBotTable(this.client);
        }
 
     }
@@ -148,11 +149,11 @@ public class ControlerMenuPage {
         stage.show();
     }
     public void fillBotTable (Client client){
-        List<Police> list = new ArrayList<Police>();
+        List<Policy> list = new ArrayList<Policy>();
         list.clear();
         this.TableViewBot.getItems().clear();
         list.addAll(HttpGetAllPolice.getAllClient(client));
-        ObservableList<Police> observableList = FXCollections.observableArrayList(list);
+        ObservableList<Policy> observableList = FXCollections.observableArrayList(list);
         this.TableViewBot.setItems(observableList);
         this.NrPolice.setCellValueFactory(new PropertyValueFactory<>("NrPolice"));
         this.Mark.setCellValueFactory(new PropertyValueFactory<>("Mark"));
