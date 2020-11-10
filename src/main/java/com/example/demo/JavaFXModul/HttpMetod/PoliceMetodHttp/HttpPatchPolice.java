@@ -12,7 +12,7 @@ public class HttpPatchPolice {
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Police> request = new HttpEntity(police);
-        restTemplate.patchForObject("http://localhost:8080/police/patch", request , Police.class);
-
+        restTemplate.put("http://localhost:8080/police/patch", request , Police.class);
+            System.out.println(request.toString());
     }
 }

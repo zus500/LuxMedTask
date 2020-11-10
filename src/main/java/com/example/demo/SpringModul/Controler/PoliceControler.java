@@ -34,7 +34,7 @@ public class PoliceControler {
         policeService.DeletPolicy(id);
     }
 
-    @PatchMapping("/patch")
+    @PutMapping("/patch")
     public void UpdatePolice(@RequestBody Police police){
         System.out.println("asdie "+ police);
         policeService.UpdatePolice(police);

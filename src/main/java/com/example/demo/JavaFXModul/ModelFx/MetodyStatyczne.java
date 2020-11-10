@@ -80,6 +80,7 @@ public class MetodyStatyczne {
                                         Client client = tableView.getItems().get(getIndex());
                                         controlerMenuPage.showNewScene(loader);
                                         AddPolceControler addPolceControler = loader.getController();
+                                        addPolceControler.setControlerMenuPage(getControlerMenuPage());
                                         addPolceControler.setClient(client);
                                         addPolceControler.setIfedit(false);
 
@@ -117,8 +118,8 @@ public class MetodyStatyczne {
                                     btn.setOnAction( event -> {
                                         Police police = tableView.getItems().get(getIndex());
                                         HttpDeletePolice.deletPoliceById(new Long(police.getId()));
-
                                         controlerMenuPage.fillBotTable(police.getClient());
+
                                     });
                                     setGraphic(btn);
                                     setText(null);
@@ -155,8 +156,9 @@ public class MetodyStatyczne {
                                         Police police = tableView.getItems().get(getIndex());
                                         controlerMenuPage.showNewScene(loader);
                                         AddPolceControler addPolceControler = loader.getController();
+                                        addPolceControler.setControlerMenuPage(getControlerMenuPage());
                                         addPolceControler.setClient(police.getClient());
-                                        addPolceControler.fillPolice(police );
+                                        addPolceControler.fillPolice(police);
                                     });
                                     setGraphic(btn);
                                     setText(null);
@@ -170,11 +172,8 @@ public class MetodyStatyczne {
     }
 
 
-
-
-
-
-
-
+    public ControlerMenuPage getControlerMenuPage() {
+        return controlerMenuPage;
+    }
 
 }

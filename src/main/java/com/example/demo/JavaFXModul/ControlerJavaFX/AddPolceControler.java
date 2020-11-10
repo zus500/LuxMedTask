@@ -15,6 +15,7 @@ public class AddPolceControler {
     private Client client ;
     private Police policeMain ;
     private Boolean ifedit ;
+    private ControlerMenuPage controlerMenuPage;
 
     @FXML
     private TextField NumberPolicy;
@@ -45,13 +46,17 @@ public class AddPolceControler {
     public void Back(){
         Stage stage = (Stage) ButtonBack.getScene().getWindow();
         stage.close();
-
+        controlerMenuPage.fillValue();
+        controlerMenuPage.fillBotTable(getPolice().getClient());
     }
     @FXML
-  public  void AddUser() {
+  public  void AddPolice() {
         initPolice();
         Stage stage = (Stage) AddUsers.getScene().getWindow();
         stage.close();
+        controlerMenuPage.fillValue();
+        controlerMenuPage.fillBotTable(getPolice().getClient());
+
     }
 
     public void initPolice(){
@@ -67,9 +72,10 @@ public class AddPolceControler {
 
 
         if(ifedit) {
+            police.setId(policeMain.getId());
             HttpPatchPolice.sendPatch(police);
-            System.out.println("pierwsze=a");
         }else {
+            setPolice(police);
             HttpPostPolice.sendPOST(police);
             System.out.println("druga=a");
         }
@@ -97,6 +103,14 @@ public class AddPolceControler {
         this.policeMain = police;
     }
 
+    public ControlerMenuPage getControlerMenuPage() {
+        return controlerMenuPage;
+    }
+
+    public void setControlerMenuPage(ControlerMenuPage controlerMenuPage) {
+        this.controlerMenuPage = controlerMenuPage;
+    }
+
     public Boolean getIfedit() {
         return ifedit;
     }
@@ -106,6 +120,8 @@ public class AddPolceControler {
     }
 
     public void fillPolice(Police police ){
+
+        setPolice(police);
         this.NumberPolicy.setText(police.getNrPolice());
         this.Mark.setText(police.getMark());
         this.Model.setText(police.getModel());
