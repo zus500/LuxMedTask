@@ -3,12 +3,11 @@ package com.example.demo.JavaFXModul.ControlerJavaFX;
 
 import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpGetAllClient;
 import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpGetAllPolice;
-import com.example.demo.JavaFXModul.ModelFx.MetodyStatyczne;
+import com.example.demo.JavaFXModul.ButtonForScreen.CreatButton;
 import com.example.demo.SpringModul.Models.Client;
 import com.example.demo.SpringModul.Models.Policy;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,7 +25,7 @@ public class ControlerMenuPage {
 
 
     @FXML
-    private TableColumn<Client , String> Name;
+    private TableColumn<Client , String> Name;   // Values for top Table
     @FXML
     private TableColumn<Client , String> LastName;
     @FXML
@@ -38,7 +37,7 @@ public class ControlerMenuPage {
     @FXML
     private TableColumn<Client , String> Email;
     @FXML
-    private TableColumn<Client, String> DeleUser;
+    private TableColumn<Client, String> DeleUser; //Button
     @FXML
     private TableColumn<Client, String> AddPolice;
     @FXML
@@ -46,44 +45,34 @@ public class ControlerMenuPage {
 
 
     @FXML
-    private TableColumn<Policy, String>  NrPolice;
-
+    private TableColumn<Policy, String>  NrPolice; // Values for top Bot
     @FXML
     private TableColumn<Policy, String>  Mark;
-
     @FXML
     private TableColumn<Policy, String>  Model;
-
     @FXML
     private TableColumn<Policy, String>  Vin;
-
     @FXML
     private TableColumn<Policy, String>  Reg;
-
     @FXML
     private TableColumn<Policy, String> Tread;
-
-
-
-
     @FXML
-    private TableColumn<Policy, String> DeletePolicy;
-
+    private TableColumn<Policy, String> DeletePolicy; // Button
     @FXML
     private TableColumn<Policy, String> EditPolicy;
 
 
-    @FXML
-    TableView<Client>  tableView;
 
+    @FXML
+    TableView<Client> tableViewTop;
     @FXML
     TableView<Policy>  TableViewBot;
 
     private  Client client;
 
     @FXML
-    public void AddUsers (){
-
+    public void AddUsers ()
+    {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/AddClient.fxml"));
         showNewScene(loader);
         AddUserControler add = loader.getController();
@@ -92,17 +81,17 @@ public class ControlerMenuPage {
     }
     @FXML
     public void initialize()  {
-        fillValue();
-        this.client =  tableView.getItems().get(1);
+        fillValue(); //set tables top and bot values
+        this.client =  tableViewTop.getItems().get(1);
         fillBotTable(this.client);
     }
 
-    public   void  fillValue(){
+    public   void  fillValue(){ //set tables top and bot values
         List<Client> list = new ArrayList<Client>();
         list.clear();
         list.addAll(HttpGetAllClient.getAllClient());
         ObservableList<Client> observableList = FXCollections.observableArrayList(list);
-        this.tableView.setItems(observableList);
+        this.tableViewTop.setItems(observableList);
         this.Name.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.LastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         this.Pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
@@ -110,37 +99,37 @@ public class ControlerMenuPage {
         this.Phone.setCellValueFactory(new PropertyValueFactory<>("Telephone"));
         this.Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
 
-        MetodyStatyczne metodyStatyczne = new MetodyStatyczne(this);
+        CreatButton creatButton = new CreatButton(this);
 
         this.DeleUser.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory1 = metodyStatyczne.creatDeletButton(tableView );
+        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory1 = creatButton.creatDeletButton(tableViewTop);
         this.DeleUser.setCellFactory(cellFactory1);
 
         this.AddPolice.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory2 = metodyStatyczne.creatAddPoliceButton(tableView);
+        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory2 = creatButton.creatAddPoliceButton(tableViewTop);
         this.AddPolice.setCellFactory(cellFactory2);
 
         this.EditClient.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory3 = metodyStatyczne.creatEditClientButton(tableView);
+        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory3 = creatButton.creatEditClientButton(tableViewTop);
         this.EditClient.setCellFactory(cellFactory3);
 
 
 
 
         this.DeletePolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory4 = metodyStatyczne.crearDeletButtonPolicy(TableViewBot);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory4 = creatButton.crearDeletButtonPolicy(TableViewBot);
         this.DeletePolicy.setCellFactory(cellFactory4);
 
         this.EditPolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory5 = metodyStatyczne.creatEditButtonPolicy(TableViewBot);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory5 = creatButton.creatEditButtonPolicy(TableViewBot);
         this.EditPolicy.setCellFactory(cellFactory5);
     }
 
 
 
     @FXML
-    public void ShowPolice(Event event  ) {
-       Client clienttable = tableView.getSelectionModel().getSelectedItem();
+    public void ShowPolice() {
+       Client clienttable = tableViewTop.getSelectionModel().getSelectedItem();
        if(clienttable  != null){
            fillBotTable(clienttable);
        }else {

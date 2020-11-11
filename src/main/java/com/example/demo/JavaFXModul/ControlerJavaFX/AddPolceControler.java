@@ -69,8 +69,6 @@ public class AddPolceControler {
         policy.setReg(Registration.getText());
         policy.setTread(Tread.getText());
         policy.setClient(client);
-
-
         if(ifedit) {
             policy.setId(policyMain.getId());
             HttpPutPolicy.putPolice(policy);
@@ -79,13 +77,6 @@ public class AddPolceControler {
             HttpPostPolicy.postPolicy(policy);
         }
     }
-    @FXML
-    public  void initialize( ){
-
-
-    }
-
-
     public void setClient(Client client) {
         this.client = client;
     }
@@ -102,16 +93,9 @@ public class AddPolceControler {
         this.policyMain = policy;
     }
 
-    public ControlerMenuPage getControlerMenuPage() {
-        return controlerMenuPage;
-    }
 
     public void setControlerMenuPage(ControlerMenuPage controlerMenuPage) {
         this.controlerMenuPage = controlerMenuPage;
-    }
-
-    public Boolean getIfedit() {
-        return ifedit;
     }
 
     public void setIfedit(Boolean ifedit) {

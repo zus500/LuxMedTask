@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Client> request = new HttpEntity(client);
-        restTemplate.postForObject("http://localhost:8080/post", request , Client.class);
+        restTemplate.postForObject(url, request , Client.class);
         logger.info("Update client --> "+client);
     }
  }

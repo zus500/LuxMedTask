@@ -17,7 +17,7 @@
       </HBox>
       <VBox alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" onMouseClicked="#ShowPolice">
+            <TableView fx:id="tableViewTop" onMouseClicked="#ShowPolice">
               <columns>
                 <TableColumn fx:id="Name" prefWidth="130.0" text="Imię" />
                 <TableColumn fx:id="LastName" prefWidth="130.0" text="Nazwisko" />

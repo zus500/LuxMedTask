@@ -35,12 +35,12 @@ public class ClientControlerTest {
     @Test
     public void addClient(){
 
-        //given
+
         Client client =new Client(0,"Marcin" , "ASDASD","PAWEŁ" , "ASDASD","PAWEŁ" , "ASDASD");
         given(clientRepository.save(client)).willAnswer(e -> e.getArgument(0));
-        //when
+
         Client expect =  clientService.SaveClient(client);
-        //then
+
         assertThat(expect).isNotNull();
         verify(clientRepository).save(any(Client.class));
     }
@@ -49,14 +49,15 @@ public class ClientControlerTest {
     @Test
     public void updateClient(){
 
-//        //given
-//        Client client =new Client(0,"Marcin" , "ASDASD","PAWEŁ" , "ASDASD","PAWEŁ" , "ASDASD");
-//        given(clientRepository.save(client)).willReturn(client);
-//        //when
-//        Client expect =  clientService.(client);
-//        //then
-//        assertThat(expect).isNotNull();
-//        verify(clientRepository).save(any(Client.class));
+
+        Client client =new Client(0,"Marcin" , "ASDASD","PAWEŁ" , "ASDASD","PAWEŁ" , "ASDASD");
+        given(clientRepository.save(client)).willReturn(client);
+
+        Client expect = clientRepository.save(client);
+
+        assertThat(expect).isNotNull();
+        verify(clientRepository).save(any(Client.class));
+
     }
 
     @Test

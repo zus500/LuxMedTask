@@ -16,8 +16,6 @@ public class AddUserControler {
 
     @FXML
     private Button ButtonBack;
-
-
     @FXML
     private Button AddUsers;
 
@@ -43,21 +41,14 @@ public class AddUserControler {
         stage.close();
     }
     @FXML
-    public void inita(){
-
-
-    }
-    @FXML
-    public  void AddUser (){
+    public  void AddClient(){
 
         Client client = fillUser();
         if(isedit) {
             client.setId(this.client.getId());
             HttpPutClient.putClient(client);
-            System.out.println("putr");
         } else {
             HttpPostClient.postClient(client);
-            System.out.println("post");
         }
         Stage stage = (Stage) AddUsers.getScene().getWindow();
         this.controlerMenuPage.fillValue();
@@ -89,9 +80,6 @@ public class AddUserControler {
         this.client = client;
     }
 
-    public boolean isIsedit() {
-        return isedit;
-    }
 
     public void setIsedit(boolean isedit) {
         this.isedit = isedit;

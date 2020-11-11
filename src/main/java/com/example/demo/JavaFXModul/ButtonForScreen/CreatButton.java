@@ -1,4 +1,4 @@
-package com.example.demo.JavaFXModul.ModelFx;
+package com.example.demo.JavaFXModul.ButtonForScreen;
 
 import com.example.demo.JavaFXModul.ControlerJavaFX.AddPolceControler;
 import com.example.demo.JavaFXModul.ControlerJavaFX.AddUserControler;
@@ -14,11 +14,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
-public class MetodyStatyczne {
+public class CreatButton {
 
      private ControlerMenuPage controlerMenuPage;
 
-    public MetodyStatyczne(ControlerMenuPage controlerMenuPage) {
+    public CreatButton(ControlerMenuPage controlerMenuPage) {
         this.controlerMenuPage = controlerMenuPage;
     }
 
@@ -119,7 +119,6 @@ public class MetodyStatyczne {
                                         Policy policy = tableView.getItems().get(getIndex());
                                         HttpDeletePolice.deletPoliceById(new Long(policy.getId()));
                                         controlerMenuPage.fillBotTable(policy.getClient());
-
                                     });
                                     setGraphic(btn);
                                     setText(null);
@@ -195,9 +194,7 @@ public class MetodyStatyczne {
                                         controlerMenuPage.showNewScene(loader);
                                         AddUserControler addUserControler = loader.getController();
                                         addUserControler.setControlerMenuPage(getControlerMenuPage());
-                                        addUserControler.setIsedit(true);
                                         addUserControler.fillClient(client);
-
                                     });
                                     setGraphic(btn);
                                     setText(null);

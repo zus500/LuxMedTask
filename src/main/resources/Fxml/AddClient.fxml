@@ -57,7 +57,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="43.0" prefWidth="223.0">
          <children>
-            <Button fx:id="AddUsers" mnemonicParsing="false" onAction="#AddUser" text="Dodaj">
+            <Button fx:id="AddUsers" mnemonicParsing="false" onAction="#AddClient" text="Dodaj">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
