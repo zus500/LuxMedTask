@@ -2,6 +2,7 @@ package com.example.demo.SpringModul.Controler;
 
 
 import com.example.demo.SpringModul.Models.Client;
+import com.example.demo.SpringModul.Models.Policy;
 import com.example.demo.SpringModul.Service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,5 +38,11 @@ public class ClientControler {
     public void deletUsers(@RequestParam int id){
         logger.info("Delet client by ID:-->"+ id);
             clientService.DeletClient(id);
+    }
+
+    @PutMapping("/put")
+    public void UpdatePolice(@RequestBody Client client){
+        logger.info("Edit --> " + client);
+        clientService.UpdateClient(client);
     }
 }

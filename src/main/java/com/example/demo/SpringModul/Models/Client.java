@@ -1,9 +1,6 @@
 package com.example.demo.SpringModul.Models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Client {
@@ -14,7 +11,7 @@ public class Client {
     private String name;
     private String lastname;
     private String pesel;
-    private String DateofBirth;
+    private String dateofBirth;
     private String Telephone;
     private String Email;
 
@@ -24,7 +21,7 @@ public class Client {
         this.name = name;
         this.lastname = lastname;
         this.pesel = pesel;
-        DateofBirth = dateofBirth;
+        this.dateofBirth = dateofBirth;
         Telephone = telephone;
         Email = email;
     }
@@ -64,9 +61,12 @@ public class Client {
         this.pesel = pesel;
     }
 
+    public String getDateofBirth() {
+        return dateofBirth;
+    }
 
     public void setDateofBirth(String dateofBirth) {
-        DateofBirth = dateofBirth;
+        this.dateofBirth = dateofBirth;
     }
 
     public String getTelephone() {
@@ -90,7 +90,7 @@ public class Client {
         return "Client{"+ " name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", pesel='" + pesel + '\'' +
-                ", DateofBirth='" + DateofBirth + '\'' +
+                ", DateofBirth='" + dateofBirth + '\'' +
                 ", Telephone='" + Telephone + '\'' +
                 ", Email='" + Email + '\'' +
                 '}';

@@ -1,6 +1,7 @@
 package com.example.demo.JavaFXModul.ModelFx;
 
 import com.example.demo.JavaFXModul.ControlerJavaFX.AddPolceControler;
+import com.example.demo.JavaFXModul.ControlerJavaFX.AddUserControler;
 import com.example.demo.JavaFXModul.ControlerJavaFX.ControlerMenuPage;
 import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpDeletedClient;
 import com.example.demo.JavaFXModul.HttpMetod.PoliceMetodHttp.HttpDeletePolice;
@@ -170,7 +171,44 @@ public class MetodyStatyczne {
         return cellFactory1;
     }
 
+    public  Callback<TableColumn<Client, String>, TableCell<Client, String>> creatEditClientButton(TableView<Client> tableView){
 
+        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory
+                =
+                new Callback<TableColumn<Client, String>, TableCell<Client, String>>() {
+                    @Override
+                    public TableCell call(final TableColumn<Client, String> param) {
+                        final TableCell<Client, String> cell = new TableCell<Client, String>() {
+
+                            Button btn = new Button("Edycja");
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    btn.setOnAction(event -> {
+                                        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/AddClient.fxml"));
+                                        Client client = tableView.getItems().get(getIndex());
+                                        controlerMenuPage.showNewScene(loader);
+                                        AddUserControler addUserControler = loader.getController();
+                                        addUserControler.setControlerMenuPage(getControlerMenuPage());
+                                        addUserControler.setIsedit(true);
+                                        addUserControler.fillClient(client);
+
+                                    });
+                                    setGraphic(btn);
+                                    setText(null);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        return cellFactory;
+    }
     public ControlerMenuPage getControlerMenuPage() {
         return controlerMenuPage;
     }

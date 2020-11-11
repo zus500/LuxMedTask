@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class HttpPutPolicy {
 
 
-    private static final String url ="http://localhost:8080/police/patch";
+    private static final String url ="http://localhost:8080/police/put";
     static  private Logger logger = LoggerFactory.getLogger(HttpPutPolicy.class);
 
     public static void putPolice(Policy policy) {

@@ -12,7 +12,7 @@ create table CLIENT
 );
 
 INSERT INTO CLIENT (ID ,NAME, LASTNAME ,PESEL, DATEOF_BIRTH , TELEPHONE ,EMAIL  ) VALUES
-(1 , 'Rafal', 'JakośTam', '74185296312', '19/12/1990', '741852963','Jakostam@o2.pl'),
+(1 , 'Rafal', 'JakośTam', '74185296312', '20/08/1801', '741852963','Jakostam@o2.pl'),
 (2 , 'Magda', 'Siema2', '96385274123', '20/10/1801', '753689421','Siema@o2.pl'),
 (3, 'Pawel' , 'Nieznany' , '78541296332', '05/1801', '968357241' , 'Nieznany@o2.pl'),
 (4 , 'Oliwa', 'BezOliwy', '896357412', '10/06/1701', '654987321','BezOliwy@o2.pl'),

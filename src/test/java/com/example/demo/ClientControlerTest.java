@@ -30,7 +30,7 @@ public class ClientControlerTest {
     private ClientRepository clientRepository;
     @InjectMocks
     private ClientService clientService;
-    
+
 //
     @Test
     public void addClient(){

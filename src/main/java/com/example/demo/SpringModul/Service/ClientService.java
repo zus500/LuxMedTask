@@ -37,4 +37,7 @@ public class ClientService {
         });
         clientRepository.deleteById(id);
     }
+    public void UpdateClient(Client client){
+        clientRepository.save(client);
+    }
 }

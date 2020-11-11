@@ -18,7 +18,7 @@ public class DemoApplication  extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/MainScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/MenuPage.fxml"));
         VBox borderPane = loader.load();
         Scene scene = new Scene(borderPane);
         primaryStage.setMaximized(true);

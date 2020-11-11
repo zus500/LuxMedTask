@@ -1,6 +1,7 @@
 package com.example.demo.JavaFXModul.ControlerJavaFX;
 
 import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpPostClient;
+import com.example.demo.JavaFXModul.HttpMetod.ClientMetodHttp.HttpPutClient;
 import com.example.demo.SpringModul.Models.Client;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,8 @@ import javafx.stage.Stage;
 public class AddUserControler {
 
     private ControlerMenuPage controlerMenuPage;
+    private Client client;
+    private boolean isedit;
 
     @FXML
     private Button ButtonBack;
@@ -40,10 +43,22 @@ public class AddUserControler {
         stage.close();
     }
     @FXML
+    public void inita(){
+
+
+    }
+    @FXML
     public  void AddUser (){
 
         Client client = fillUser();
-        HttpPostClient.postClient(client);
+        if(isedit) {
+            client.setId(this.client.getId());
+            HttpPutClient.putClient(client);
+            System.out.println("putr");
+        } else {
+            HttpPostClient.postClient(client);
+            System.out.println("post");
+        }
         Stage stage = (Stage) AddUsers.getScene().getWindow();
         this.controlerMenuPage.fillValue();
         stage.close();
@@ -64,5 +79,32 @@ public class AddUserControler {
 
     public void setControlerMenuPage(ControlerMenuPage controlerMenuPage) {
         this.controlerMenuPage = controlerMenuPage;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public boolean isIsedit() {
+        return isedit;
+    }
+
+    public void setIsedit(boolean isedit) {
+        this.isedit = isedit;
+    }
+
+    public void fillClient (Client client){
+        setClient(client);
+        this.Name.setText(client.getName());
+        this.Birth.setText(client.getDateofBirth());
+        this.Email.setText(client.getEmail());
+        this.LastName.setText(client.getLastname());
+        this.Pesel.setText(client.getPesel());
+        this.Phone.setText(client.getTelephone());
+        setIsedit(true);
     }
 }

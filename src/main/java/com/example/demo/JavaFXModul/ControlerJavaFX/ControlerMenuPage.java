@@ -41,6 +41,8 @@ public class ControlerMenuPage {
     private TableColumn<Client, String> DeleUser;
     @FXML
     private TableColumn<Client, String> AddPolice;
+    @FXML
+    private TableColumn<Client, String> EditClient;
 
 
     @FXML
@@ -62,6 +64,8 @@ public class ControlerMenuPage {
     private TableColumn<Policy, String> Tread;
 
 
+
+
     @FXML
     private TableColumn<Policy, String> DeletePolicy;
 
@@ -80,16 +84,17 @@ public class ControlerMenuPage {
     @FXML
     public void AddUsers (){
 
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/AddUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/Fxml/AddClient.fxml"));
         showNewScene(loader);
         AddUserControler add = loader.getController();
+        add.setIsedit(false);
         add.setControlerMenuPage(this);
     }
     @FXML
     public void initialize()  {
         fillValue();
-      this.client =  tableView.getItems().get(1);
-      fillBotTable(this.client);
+        this.client =  tableView.getItems().get(1);
+        fillBotTable(this.client);
     }
 
     public   void  fillValue(){
@@ -101,7 +106,7 @@ public class ControlerMenuPage {
         this.Name.setCellValueFactory(new PropertyValueFactory<>("name"));
         this.LastName.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         this.Pesel.setCellValueFactory(new PropertyValueFactory<>("pesel"));
-        this.Birth.setCellValueFactory(new PropertyValueFactory<>("DateofBirth"));
+        this.Birth.setCellValueFactory(new PropertyValueFactory<>("dateofBirth"));
         this.Phone.setCellValueFactory(new PropertyValueFactory<>("Telephone"));
         this.Email.setCellValueFactory(new PropertyValueFactory<>("Email"));
 
@@ -115,13 +120,20 @@ public class ControlerMenuPage {
         Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory2 = metodyStatyczne.creatAddPoliceButton(tableView);
         this.AddPolice.setCellFactory(cellFactory2);
 
+        this.EditClient.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
+        Callback<TableColumn<Client, String>, TableCell<Client, String>> cellFactory3 = metodyStatyczne.creatEditClientButton(tableView);
+        this.EditClient.setCellFactory(cellFactory3);
+
+
+
+
         this.DeletePolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory3 = metodyStatyczne.crearDeletButtonPolicy(TableViewBot);
-        this.DeletePolicy.setCellFactory(cellFactory3);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory4 = metodyStatyczne.crearDeletButtonPolicy(TableViewBot);
+        this.DeletePolicy.setCellFactory(cellFactory4);
 
         this.EditPolicy.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory4 = metodyStatyczne.creatEditButtonPolicy(TableViewBot);
-        this.EditPolicy.setCellFactory(cellFactory4);
+        Callback<TableColumn<Policy, String>, TableCell<Policy, String>> cellFactory5 = metodyStatyczne.creatEditButtonPolicy(TableViewBot);
+        this.EditPolicy.setCellFactory(cellFactory5);
     }
 
 

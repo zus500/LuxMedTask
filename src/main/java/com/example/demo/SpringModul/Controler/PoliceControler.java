@@ -39,7 +39,7 @@ public class PoliceControler {
         policeService.DeletPolicy(id);
     }
 
-    @PutMapping("/patch")
+    @PutMapping("/put")
     public void UpdatePolice(@RequestBody Policy policy){
         logger.info("Edit --> " + policy);
         policeService.UpdatePolice(policy);

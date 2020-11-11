@@ -25,6 +25,7 @@
                   <TableColumn fx:id="Birth" prefWidth="130.0" text="Data urodzenia" />
                   <TableColumn fx:id="Phone" prefWidth="130.0" text="Telefon" />
                   <TableColumn fx:id="Email" prefWidth="130.0" resizable="false" text="E-mail" />
+                  <TableColumn fx:id="EditClient" prefWidth="130.0" text="Edytuj" />
                   <TableColumn fx:id="DeleUser" minWidth="-Infinity" prefWidth="130.0" text="Usuń" />
                   <TableColumn fx:id="AddPolice" prefWidth="130.0" text="Add Police" />
               </columns>
@@ -41,8 +42,8 @@
                   <TableColumn fx:id="Vin" prefWidth="130.0" text="Vin" />
                   <TableColumn fx:id="Reg" prefWidth="130.0" text="Numer Rejestracji" />
                   <TableColumn fx:id="Tread" prefWidth="130.0" text="Bieżnik" />
-                  <TableColumn fx:id="DeletePolicy" prefWidth="130.0" text="Usuń" />
                   <TableColumn fx:id="EditPolicy" prefWidth="130.0" text="Edytuj" />
+                  <TableColumn fx:id="DeletePolicy" prefWidth="130.0" text="Usuń" />
               </columns>
             </TableView>
          </children>
