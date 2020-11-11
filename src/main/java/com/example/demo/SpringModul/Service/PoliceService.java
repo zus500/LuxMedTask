@@ -15,18 +15,18 @@ public class PoliceService {
     @Autowired
     PoliceRepository policeRepository;
 
-    public void SavePolice(Policy policy){
-        policeRepository.save(policy);
+    public Policy SavePolice(Policy policy){
+      return  policeRepository.save(policy);
 
     }
     public List<Policy> FindAllById(Client id)
     {return  policeRepository.findAllByClient(id);}
 
-    public void DeletPolicy(Long id){
+    public void DeletPolicy(int id){
         policeRepository.deleteById(id);
     }
 
-    public void UpdatePolice(Policy policy) {
-        policeRepository.save(policy);
+    public Policy UpdatePolice(Policy policy) {
+       return policeRepository.save(policy);
     }
 }

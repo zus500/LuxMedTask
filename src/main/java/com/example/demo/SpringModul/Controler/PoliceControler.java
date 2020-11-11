@@ -34,7 +34,7 @@ public class PoliceControler {
         return policeService.FindAllById(id);
     }
     @DeleteMapping("/delet/")
-    public void DeletPolice(@RequestParam Long id){
+    public void DeletPolice(@RequestParam int id){
         logger.info("Delet policy by ID -->" + id);
         policeService.DeletPolicy(id);
     }

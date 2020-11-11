@@ -8,6 +8,6 @@ import java.util.Optional;
 
 
 @Repository
-public interface ClientRepository extends CrudRepository <Client , Long> {
+public interface ClientRepository extends CrudRepository <Client , Integer> {
 
 }

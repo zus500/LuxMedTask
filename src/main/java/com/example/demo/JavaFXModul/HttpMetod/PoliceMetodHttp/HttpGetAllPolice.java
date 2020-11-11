@@ -15,7 +15,7 @@ import java.util.List;
 public class HttpGetAllPolice {
 
     private static Logger logger = LoggerFactory.getLogger(HttpGetAllPolice.class);
-    private final static    String url = "http://localhost:8080/police/getall";
+    private final static String url = "http://localhost:8080/police/getall";
 
     public static  List<Policy> getAllClient(Client client) {
         RestTemplate restTemplate = new RestTemplate();

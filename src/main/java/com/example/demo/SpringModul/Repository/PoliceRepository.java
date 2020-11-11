@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PoliceRepository  extends CrudRepository<Policy, Long> {
+public interface PoliceRepository  extends CrudRepository<Policy, Integer> {
 
     public List<Policy> findAllByClient(Client id);
 

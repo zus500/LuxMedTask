@@ -9,7 +9,7 @@ public class Policy {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long id;
+    private int id;
 
     private String NrPolice;
     private String Mark;
@@ -33,11 +33,11 @@ public class Policy {
         this.client = client;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -99,5 +99,15 @@ public class Policy {
                 ", Tread='" + Tread + '\'' +
                 ", client=" + client +
                 '}';
+    }
+
+    public Policy(int id, String nrPolice, String mark, String model, String vin, String reg, String tread) {
+        this.id = id;
+        NrPolice = nrPolice;
+        Mark = mark;
+        Model = model;
+        Vin = vin;
+        Reg = reg;
+        Tread = tread;
     }
 }

@@ -10,7 +10,7 @@ public class Client {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long id;
+    private int id;
     private String name;
     private String lastname;
     private String pesel;
@@ -19,25 +19,24 @@ public class Client {
     private String Email;
 
 
-
-    public Client( String name, String lastname, String pesel, String dateofBirth, String telephone , String Email) {
+    public Client(int id, String name, String lastname, String pesel, String dateofBirth, String telephone, String email) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.pesel = pesel;
         DateofBirth = dateofBirth;
         Telephone = telephone;
-        this.Email = Email;
-
+        Email = email;
     }
 
     public Client() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

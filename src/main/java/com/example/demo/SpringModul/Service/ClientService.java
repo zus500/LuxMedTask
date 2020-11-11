@@ -14,6 +14,10 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+    public ClientService(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
     @Autowired
     PoliceRepository policeService;
 
@@ -26,7 +30,7 @@ public class ClientService {
        return clientRepository.save(client);
     }
 
-    public void  DeletClient(Long id){
+    public void  DeletClient(int id){
         Optional<Client> client = clientRepository.findById(id);
         policeService.findAllByClient(client.get()).forEach(e ->{
             policeService.deleteById(e.getId());

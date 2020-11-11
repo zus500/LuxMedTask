@@ -17,6 +17,10 @@ public class ClientControler {
     ClientService clientService;
 
 
+    public ClientControler(ClientService clientService) {
+        this.clientService = clientService;
+    }
+
     @GetMapping("/get")
     public Iterable<Client> getAllClients(){
         logger.info("Return all client");
@@ -30,7 +34,7 @@ public class ClientControler {
     }
 
     @DeleteMapping("/delet/")
-    public void deletUsers(@RequestParam Long id){
+    public void deletUsers(@RequestParam int id){
         logger.info("Delet client by ID:-->"+ id);
             clientService.DeletClient(id);
     }
